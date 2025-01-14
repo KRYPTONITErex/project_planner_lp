@@ -1,11 +1,11 @@
 <template>
     <div class="div1" v-for="task in tasks" :key="task.id" >
-        <div class="task-card">
+        <div class="task-card" :class="{done: task.completed}">
             <div class="div2" @click="show(task.id)"><h2>{{task.task}}</h2></div>
 
             <div class="icons">
                 <span class="material-symbols-outlined">edit_square</span>
-                <span class="material-symbols-outlined">task_alt</span>
+                <span @click="completed(task.id)" class="material-symbols-outlined">task_alt</span>
                 <span @click="deletePj(task.id)" class="material-symbols-outlined">scan_delete</span>
             </div>
         </div>
@@ -57,6 +57,30 @@ export default {
             .catch((err)=>{
                 console.log(err)
             })
+        },
+        completed(id) {
+            
+            let task = this.tasks.find((task) =>{
+                return task.id === id
+            })
+    
+            // console.log('completed')
+            let completedRoute = 'http://localhost:3003/tasks/' + id
+           fetch(completedRoute, {method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    completed: !task.completed
+                })
+            })
+            .then((res)=>{
+                return res.json()
+            })
+            .then(()=>{
+                task.completed = !task.completed
+            })
+          
         }
     }
     
@@ -144,6 +168,10 @@ p:nth-of-type(1) {
 .material-symbols-outlined {
     margin: 6px;
     cursor: pointer;
+}
+
+.done {
+    border-right: rgb(32, 214, 32) 5px solid;
 }
   
 </style>
