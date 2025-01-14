@@ -3,7 +3,7 @@
         <h1>Home</h1>
 
         <div class="projects" v-for="project in projects" :key="project.id">
-            <SingleProject :project="project"></SingleProject>
+            <SingleProject :project="project" @delete="deleteProj"></SingleProject>
         </div>
     </div>
   
@@ -31,6 +31,13 @@ export default {
             // console.log(data)
             this.projects = data
         })
+    },
+    methods:{
+        deleteProj(id){
+            this.projects = this.projects.filter((project)=>{
+                return project.id !== id
+            })
+        }
     }
 
 }

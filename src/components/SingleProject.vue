@@ -1,8 +1,15 @@
 <template>
 
-    <div class="project" @click="show">
+    <div class="project">
         <div class="project-title" >
-            <h2>{{ project.title }}</h2>
+            <div>
+                <h2 @click="show">{{ project.title }}</h2>
+            </div>
+            <div class="icons">
+                <span class="material-symbols-outlined">edit_square</span>
+                <span class="material-symbols-outlined">task_alt</span>
+                <span @click="deleteProj" class="material-symbols-outlined">scan_delete</span>
+            </div>
         </div>
         <div v-if="showDescription">
             <p>{{ project.description }}</p><hr>
@@ -15,13 +22,25 @@
 export default {
     data() {
         return {
-            showDescription: false
+            showDescription: false,
+            api: 'http://localhost:3000/projects/'
         }
     },
     props: ['project'],
     methods: {
         show() {
             this.showDescription = !this.showDescription
+        },
+        deleteProj() {
+            let deleteRoute = this.api + this.project.id
+            console.log('deleteRoute')
+            fetch(deleteRoute,{method: 'DELETE'})
+            .then(()=>{
+                this.$emit('delete', this.project.id)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
         }
     }
 
@@ -37,6 +56,7 @@ export default {
     margin-bottom: 16px; /* Space between project cards */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+    border-right: crimson 4px solid;
 }
 
 .project:hover {
@@ -49,6 +69,9 @@ export default {
     font-weight: bold; /* Make the title stand out */
     color: #333; /* Darker text for contrast */
     margin-bottom: 8px; /* Space below the title */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .project-title h2 {
@@ -66,5 +89,11 @@ hr {
     border: 0;
     border-top: 1px solid #ddd; /* Subtle horizontal line */
     margin: 16px 0; /* Space above and below the line */
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
 }
 </style>
