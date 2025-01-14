@@ -1,12 +1,12 @@
 <template>
     <div class="div1" v-for="task in tasks" :key="task.id" >
-        <div @click="show(task.id)" class="task-card">
-            <div class="div2"><h2>{{task.task}}</h2></div>
+        <div class="task-card">
+            <div class="div2" @click="show(task.id)"><h2>{{task.task}}</h2></div>
 
             <div class="icons">
                 <span class="material-symbols-outlined">edit_square</span>
                 <span class="material-symbols-outlined">task_alt</span>
-                <span class="material-symbols-outlined">scan_delete</span>
+                <span @click="deletePj(task.id)" class="material-symbols-outlined">scan_delete</span>
             </div>
         </div>
            
@@ -44,6 +44,19 @@ export default {
     methods: {
         show(id) {
             this.selectedTaskId = this.selectedTaskId === id ? null : id
+        },
+        deletePj(id) {
+            // console.log('task.id', id)
+            let deleteRoute = 'http://localhost:3003/tasks/' + id
+            fetch(deleteRoute,{method: 'DELETE'})
+            .then((res)=>{
+                this.tasks = this.tasks.filter((task) => {
+                    return task.id !== id
+                })
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
         }
     }
     
