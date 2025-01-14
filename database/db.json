@@ -1,44 +1,46 @@
 {
   "projects": [
     {
-      "id": "1",
-      "title": "Project 1",
-      "description": "Project 1 description"
-    },
-    {
       "id": "2",
       "title": "Project 2",
-      "description": "Project 2 description"
+      "description": "Project 2 description",
+      "completed": true
     },
     {
       "id": "4",
       "title": "Project 4",
-      "description": "Project 4 description"
+      "description": "Project 4 description",
+      "completed": true
     },
     {
       "id": "5",
       "title": "Project 5",
-      "description": "Project 5 description"
+      "description": "Project 5 description",
+      "completed": true
     },
     {
       "id": "7",
       "title": "Project 7",
-      "description": "Project 7 description"
+      "description": "Project 7 description",
+      "completed": false
     },
     {
       "id": "8",
       "title": "Project 8",
-      "description": "Project 8 description"
+      "description": "Project 8 description",
+      "completed": false
     },
     {
       "id": "9",
       "title": "Project 9",
-      "description": "Project 9 description"
+      "description": "Project 9 description",
+      "completed": false
     },
     {
       "id": "10",
       "title": "Project 10",
-      "description": "Project 10 description"
+      "description": "Project 10 description",
+      "completed": false
     }
   ]
 }
