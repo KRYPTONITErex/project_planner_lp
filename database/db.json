@@ -23,7 +23,7 @@
     {
       "id": "9",
       "task": "Task 9",
-      "completed": false,
+      "completed": true,
       "priority": 9,
       "description": "Description 9",
       "category": "Category 9",

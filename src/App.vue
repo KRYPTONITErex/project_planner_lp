@@ -1,9 +1,18 @@
 <template>
-  
+
+  <NavBar></NavBar>
+
+
   <router-view/>
+
 </template>
 
 <script>
+import NavBar from './components/NavBar'
+export default {
+  components: { NavBar },
+  
+}
 
 
 
@@ -18,6 +27,7 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+
 
 
 </style>
