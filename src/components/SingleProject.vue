@@ -1,5 +1,9 @@
 <template>
-    <div class="div1" v-for="task in tasks" :key="task.id" >
+
+    <FilterNav :current="current" @filtervalue="current=$event"></FilterNav>
+    <!-- {{ current }} -->
+
+    <div class="div1" v-for="task in filteredTasks" :key="task.id" >
         <div class="task-card" :class="{done: task.completed}">
             <div class="div2" @click="show(task.id)"><h2>{{task.task}}</h2></div>
 
@@ -26,12 +30,30 @@
 </template>
 
 <script>
+import FilterNav from './FilterNav'
 export default {
+  components: { FilterNav },
     data() {
         return {
+            current: 'all',
             tasks: [],
             selectedTaskId: null,
 
+        }
+    },
+    computed: {
+        filteredTasks() {
+            if(this.current === 'completed') {
+                return this.tasks.filter((task) => {
+                    return task.completed
+                })
+        }
+            if(this.current === 'ongoing') {
+                return this.tasks.filter((task) => {
+                    return !task.completed
+                })
+            }
+            return this.tasks
         }
     },
 

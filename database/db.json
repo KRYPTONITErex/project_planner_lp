@@ -2,7 +2,7 @@
   "tasks": [
     {
       "id": "7",
-      "completed": false,
+      "completed": true,
       "priority": 7,
       "task": "Updated",
       "description": "ok larr",
@@ -21,7 +21,7 @@
       "task": "Lwin Phyo task",
       "description": "Ko Lwin Phyo Editting",
       "category": "190",
-      "completed": false
+      "completed": true
     },
     {
       "id": "742e",
@@ -35,6 +35,13 @@
       "task": "Edit Task",
       "description": "Updating OK lar",
       "category": "99",
+      "completed": false
+    },
+    {
+      "id": "34ad",
+      "task": "Add Computed Nav",
+      "description": "to add nav bar and show computed",
+      "category": "1234",
       "completed": false
     }
   ]
