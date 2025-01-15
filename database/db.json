@@ -40,7 +40,7 @@
       "id": "10",
       "title": "Project 10",
       "description": "Project 10 description",
-      "completed": false
+      "completed": true
     }
   ]
 }
