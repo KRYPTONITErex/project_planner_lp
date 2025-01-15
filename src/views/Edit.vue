@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <h1>Add Project</h1>
+
+<div>
+        <h1>Edit Project</h1>
     </div>
 
-    <form @submit.prevent="addProject">
+    <form @submit.prevent="UpdateProject">
 
-        <h2>Add your project</h2>
+        <h2>Update project status</h2>
 
         <label for="">Task</label>
         <input v-model="task" type="text" placeholder="Enter task name">
@@ -16,14 +17,15 @@
         <label for="">project category</label>
         <input v-model="category" type="text" placeholder="Enter project category">
 
-        <button type="submit">Add Project</button>
+        <button @click="UpdateProject" type="submit">Update Project</button>
 
     </form>
+
+  
 </template>
 
 <script>
 export default {
-    props: ['id'],
     data() {
         return {
             task: '',
@@ -32,10 +34,10 @@ export default {
         }
     },
     methods: {
-        addProject() {
+        UpdateProject() {
             // console.log('add project')
-            fetch('http://localhost:3003/tasks/', {
-                method: 'POST',
+            fetch('http://localhost:3003/tasks/' + this.$route.params.id, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -48,11 +50,22 @@ export default {
     
             })
             .then((res)=>{
-                //redirect home
                 this.$router.push('/')
             })
         }
+    },
+    mounted() {
+        fetch('http://localhost:3003/tasks/' + this.$route.params.id)
+        .then((res)=>{
+            return res.json()
+        })
+        .then((data)=>{
+            this.task = data.task
+            this.description = data.description
+            this.category = data.category
+        })
     }
+
 
 }
 </script>

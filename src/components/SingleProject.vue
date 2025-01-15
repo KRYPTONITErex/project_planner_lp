@@ -4,19 +4,22 @@
             <div class="div2" @click="show(task.id)"><h2>{{task.task}}</h2></div>
 
             <div class="icons">
-                <span class="material-symbols-outlined">edit_square</span>
+
+                <router-link :to="{name: 'EditProject', params: {id: task.id}}">
+                    <span class="material-symbols-outlined">edit_square</span>
+                </router-link>
+
                 <span @click="completed(task.id)" class="material-symbols-outlined">task_alt</span>
                 <span @click="deletePj(task.id)" class="material-symbols-outlined">scan_delete</span>
             </div>
         </div>
            
         <div v-if="selectedTaskId === task.id">
-                <h3>{{task.description}}</h3>
                 <p>{{task.completed}}</p>
                 <p>{{task.priority}}</p>
+                <h3>{{task.description}}</h3>
                 <p>{{task.category}}</p>
-                <p>{{task.date}}</p>
-                <p>{{task.time}}</p>
+                
         </div>
     </div>
 

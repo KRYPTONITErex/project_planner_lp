@@ -2,63 +2,40 @@
   "tasks": [
     {
       "id": "7",
-      "task": "Task 7",
-      "completed": true,
+      "completed": false,
       "priority": 7,
-      "description": "Description 7",
-      "category": "Category 7",
-      "date": "2023-07-07",
-      "time": "16:00"
-    },
-    {
-      "id": "8",
-      "task": "Task 8",
-      "completed": true,
-      "priority": 8,
-      "description": "Description 8",
-      "category": "Category 8",
-      "date": "2023-08-08",
-      "time": "17:00"
-    },
-    {
-      "id": "9",
-      "task": "Task 9",
-      "completed": true,
-      "priority": 9,
-      "description": "Description 9",
-      "category": "Category 9",
-      "date": "2023-09-09",
-      "time": "18:00"
-    },
-    {
-      "id": "10",
-      "task": "Task 10",
-      "completed": false,
-      "priority": 10,
-      "description": "Description 10",
-      "category": "Category 10",
-      "date": "2023-10-10",
-      "time": "19:00"
-    },
-    {
-      "id": "11",
-      "task": "Task 11",
-      "completed": false,
-      "priority": 11,
-      "description": "Description 11",
-      "category": "Category 11",
-      "date": "2023-11-11",
-      "time": "20:00"
+      "task": "Updated",
+      "description": "ok larr",
+      "category": "234"
     },
     {
       "id": "12",
-      "task": "Task 12",
-      "completed": false,
+      "completed": true,
       "priority": 12,
+      "task": "Task 12",
       "description": "Description 12",
-      "category": "Category 12",
-      "date": "2023-12-12",
-      "time": "21:00"
+      "category": "Category 12"
+    },
+    {
+      "id": "fdb7",
+      "task": "Lwin Phyo task",
+      "description": "Ko Lwin Phyo Editting",
+      "category": "190",
+      "completed": false
+    },
+    {
+      "id": "742e",
+      "task": "Khaing Task",
+      "description": "Khaing Zar",
+      "category": "13",
+      "completed": false
+    },
+    {
+      "id": "24b6",
+      "task": "Edit Task",
+      "description": "Updating OK lar",
+      "category": "99",
+      "completed": false
     }
   ]
 }

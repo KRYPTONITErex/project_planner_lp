@@ -10,7 +10,17 @@
 import SingleProject from '../components/SingleProject'
 export default {
   components: {
-    SingleProject, SingleProject },
+    SingleProject },
 
 }
 </script>
+
+<style>
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+</style>
