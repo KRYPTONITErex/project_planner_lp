@@ -4,15 +4,48 @@
 
 
   <div>
-      <form>
+      <form @submit.prevent="addProject">
             <label for="">Project Title</label>
-            <input type="text" placeholder="Title">
-            <label for="">Project Details</label>
-            <input type="text" placeholder="Project Details">
+            <input v-model="title" type="text" placeholder="Title">
+            <label  for="">Project Details</label>
+            <input v-model="description" type="text" placeholder="Project Details">
             <button type="submit">Add Project</button>
       </form>
   </div>
 </template>
+
+
+<script>
+export default {
+    data() {
+        return {
+            title: '',
+            description: ''
+        }
+    },
+    methods: {
+        addProject(){
+            // console.log('add project')
+            fetch('http://localhost:3000/projects', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: this.title,
+                    description: this.description,
+                    completed: false
+                })
+            })
+            .then(()=>{
+                //redirect to home page
+                this.$router.push({name: 'home'})
+            })
+       
+        }
+    }
+}
+</script>
 
 
 

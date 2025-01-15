@@ -6,7 +6,11 @@
                 <h4 @click="show">{{ project.title }}</h4>
             </div>
             <div class="icons">
-                <span class="material-symbols-outlined">edit_square</span>
+
+                <router-link :to="{name: 'EditProject', params: {id: project.id}}">
+                    <span class="material-symbols-outlined">edit_square</span>
+                </router-link>
+
                 <span @click="completeProj" class="material-symbols-outlined">task_alt</span>
                 <span @click="deleteProj" class="material-symbols-outlined">scan_delete</span>
             </div>
