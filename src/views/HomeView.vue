@@ -1,26 +1,51 @@
 <template>
     <div class="home">
         <h1>Home</h1>
+        {{ current }}
 
-        <div class="projects" v-for="project in projects" :key="project.id">
+
+        <FilterNav :current="current" @filtervalue="current = $event"></FilterNav>
+
+        <div class="projects" v-for="project in filteredProjects" :key="project.id">
             <SingleProject @complete="complete" :project="project" @delete="deleteProj"></SingleProject>
         </div>
     </div>
+
   
 </template>
 
 <script>
+import FilterNav from '../components/FilterNav'
 import SingleProject from '../components/SingleProject.vue'
 export default {
     data() {
         return {
+            current: 'All',
             projects: []
         }
     },
     name: 'Home',
     components: {
+    FilterNav,
     SingleProject,
         
+    },
+    computed: {
+        filteredProjects() {
+            if(this.current === 'Completed') {
+                return this.projects.filter((project)=>{
+                    return project.completed
+                })
+            }
+
+            if(this.current === 'Ongoing') {
+                return this.projects.filter((project)=>{
+                    return !project.completed
+                })
+            }
+
+            return this.projects
+        }
     },
     mounted() {
         fetch('http://localhost:3000/projects/')
@@ -45,6 +70,7 @@ export default {
             project.completed = !project.completed
         }
     }
+   
 
 }
 </script>
